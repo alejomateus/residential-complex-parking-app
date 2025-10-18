@@ -36,12 +36,12 @@ export class CheckResidentialUserPage implements OnInit {
 			const user = await firstValueFrom(this.userService.getUserById(userId));
 			const parkingSpots: any[] = await firstValueFrom(this.parkingSpotsService.getParkingSpotsByUserId(userId));
 			if (parkingSpots.length === 0) {
-				this.commonsService.showAlert(`${user.name} ${user.lastName}`, 'Bienvenido');
-			} else {
-				this.commonsService.showAlert(
-					`${user.name} ${user.lastName}, aun no tienes parqueadero asignado`,
+        this.commonsService.showAlert(
+          `${user.name} ${user.lastName}, aun no tienes parqueadero asignado`,
 					'Bienvenido'
 				);
+			} else {
+        this.commonsService.showAlert(`${user.name} ${user.lastName} tu parqueadero asignado es ${parkingSpots[0].name}`, 'Bienvenido');
 			}
 		} catch (error) {
 			await this.commonsService.showAlert(
