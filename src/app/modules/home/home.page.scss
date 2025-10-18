@@ -1,0 +1,24 @@
+h5 {
+	margin: 1rem 0 0 0;
+	font-weight: bold;
+}
+.image {
+	margin: auto;
+}
+.description {
+	color: var(--white);
+	h2 {
+		text-align: center;
+	}
+	font-size: 1.25rem;
+	text-align: justify;
+	margin: auto;
+}
+
+.instructor {
+	max-width: 500px;
+}
+.section {
+	color: var(--white);
+	background-color: var(--dark);
+}

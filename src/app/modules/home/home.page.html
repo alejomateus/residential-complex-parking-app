@@ -1,0 +1,64 @@
+<ion-content>
+    <ion-grid class="table-header ion-hide-sm-down">
+        <ion-row class="ion-align-items-center ion-padding-horizontal">
+            <ion-col size="1">#</ion-col>
+            <ion-col size="4">Nombre</ion-col>
+            <ion-col size="4">Email</ion-col>
+            <ion-col size="3" class="ion-text-end">Acciones</ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-list>
+        <ion-item *ngFor="let item of itemsPaginados">
+            <ion-grid>
+                <ion-row class="ion-align-items-center">
+                    <ion-col size="1" class="ion-text-start">
+                        <ion-label color="medium">{{ item.id }}</ion-label>
+                    </ion-col>
+
+                    <ion-col size="4" size-sm="4">
+                        <ion-label>
+                            <h3>{{ item.nombre }}</h3>
+                            <p class="ion-hide-md-up">{{ item.email }}</p>
+                        </ion-label>
+                    </ion-col>
+                    <ion-col size="4" class="ion-hide-sm-down">
+                        <ion-label>{{ item.email }}</ion-label>
+                    </ion-col>
+
+                    <ion-col size="3" class="ion-text-end">
+                        <ion-buttons slot="end">
+                            <ion-button color="primary" fill="clear" (click)="verDetalle(item.id)">
+                                <ion-icon slot="icon-only" name="eye"></ion-icon>
+                            </ion-button>
+                            <ion-button color="danger" fill="clear" (click)="eliminar(item.id)">
+                                <ion-icon slot="icon-only" name="trash"></ion-icon>
+                            </ion-button>
+                        </ion-buttons>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+
+        <ion-item *ngIf="itemsPaginados.length === 0">
+            <ion-label class="ion-text-center ion-padding">No se encontraron resultados.</ion-label>
+        </ion-item>
+    </ion-list>
+
+    <div class="pagination-controls ion-padding-vertical">
+        <ion-buttons>
+            <ion-button (click)="paginaAnterior()" [disabled]="paginaActual === 1" fill="outline" color="primary">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
+
+            <ion-text class="ion-padding-horizontal">
+                Página **{{ paginaActual }}** de **{{ totalPaginas }}**
+            </ion-text>
+
+            <ion-button (click)="paginaSiguiente()" [disabled]="paginaActual === totalPaginas" fill="outline" color="primary">
+                <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </div>
+
+</ion-content>

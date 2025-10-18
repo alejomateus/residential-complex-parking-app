@@ -1,0 +1,8 @@
+<div class="p-4"></div>
+<ion-content class="ion-text-center ion-padding">
+	<h2>Este es tu codigo qr</h2>
+	@if (qrCodeData()) {
+	<qrcode [qrdata]="qrCodeData()" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+	<span>Muestra esto en porteria para validar tu ingreso</span>
+	}
+</ion-content>

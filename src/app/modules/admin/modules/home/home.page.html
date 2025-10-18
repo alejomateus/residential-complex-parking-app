@@ -1,0 +1,33 @@
+<ion-content [fullscreen]="true">
+	<div class="p-4"></div>
+	<ion-grid>
+		<ion-row>
+			<ion-col size="12" class="ion-text-center pt-4">
+				<h3>Espacios de parqueo para visitantes</h3>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col class="ion-no-padding"></ion-col>
+			<ion-col size="12" size-sm="11" size-md="11" size-lg="10">
+				<ion-row>
+					@for (option of options(); track option) {
+					<ion-col size="12" size-sm="6" size-md="6" size-lg="6" class="p-2 pb-2">
+						<ion-card [color]="option.color" class="m-0 ion-padding" (click)="navigate(option.redirect)">
+							@if (option.title) {
+							<ion-card-header class="ion-text-start p-2">
+								<ion-card-title class="fw-bold"> <h2 class="m-0">{{ option.title }}</h2></ion-card-title>
+							</ion-card-header>
+							} @if (option.description) {
+							<ion-card-content class="ion-text-start ps-2"
+								><h2 class="m-0">{{ option.description }}</h2>
+							</ion-card-content>
+							}
+						</ion-card>
+					</ion-col>
+					}
+				</ion-row>
+			</ion-col>
+			<ion-col></ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

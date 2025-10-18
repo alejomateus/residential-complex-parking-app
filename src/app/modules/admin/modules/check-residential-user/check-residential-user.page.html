@@ -1,0 +1,21 @@
+<ion-content [fullscreen]="true">
+	<div class="p-4"></div>
+	<ion-grid>
+		<ion-row>
+			<ion-col size="12" class="ion-text-center pt-4">
+				<h3>Verifica el residente que va a ingresar</h3>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col class="ion-no-padding"></ion-col>
+			<ion-col size="12" size-sm="11" size-md="11" size-lg="10">
+				<ion-row>
+					<ion-col class="ion-text-center">
+							<button class="btn btn-primary" type="button" (click)="startScan()">Escanea el codigo qr</button>
+					</ion-col>
+				</ion-row>
+			</ion-col>
+			<ion-col></ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "residential-complex-parking-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

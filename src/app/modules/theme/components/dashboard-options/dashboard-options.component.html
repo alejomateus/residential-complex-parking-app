@@ -1,0 +1,45 @@
+<ion-grid>
+	<ion-row>
+		<ion-col class="ion-no-padding">
+			<div class="p-2">
+				<h1 class="text-center fw-bold m-0">{{ title }}</h1>
+			</div>
+		</ion-col>
+		<ion-col size="12" size-md="12">
+			<ion-grid>
+				<ion-row>
+					@for (option of dashboardOptions; track $index) {
+						<ion-col size="12" size-sm="6" size-md="3" size-lg="3" (click)="clickContainer(option)">
+							<ion-card [color]="option.color" class="m-0 shadow">
+								@if (option.image) {
+									<img [alt]="option.title" [src]="'assets/' + option.image" />
+								}
+								@if (option.url) {
+									<div class="iframe-container">
+										<iframe
+											[src]="getSanitizedUrl(option.url)"
+											title="YouTube video player"
+											frameborder="0"
+											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+											referrerpolicy="strict-origin-when-cross-origin"
+											allowfullscreen
+										></iframe>
+									</div>
+								}
+								@if (option.title) {
+									<ion-card-header class="ion-text-center">
+										<ion-card-title>{{ option.title }}</ion-card-title>
+									</ion-card-header>
+								}
+								@if (option.description) {
+									<ion-card-content class="ion-text-center"> {{ option.description }} </ion-card-content>
+								}
+							</ion-card>
+						</ion-col>
+					}
+				</ion-row>
+			</ion-grid>
+		</ion-col>
+		<ion-col></ion-col>
+	</ion-row>
+</ion-grid>

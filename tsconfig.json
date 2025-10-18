@@ -1,0 +1,48 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"baseUrl": "./src",
+		"outDir": "./dist/out-tsc",
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"noImplicitOverride": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"sourceMap": true,
+		"declaration": false,
+		"downlevelIteration": true,
+		"experimentalDecorators": true,
+		"moduleResolution": "node",
+		"importHelpers": true,
+		"noImplicitAny": false,
+		"strictNullChecks": false,
+		"target": "ES2022",
+		"module": "ES2022",
+		"useDefineForClassFields": false,
+		"strictPropertyInitialization": false,
+		"lib": ["es2018", "dom"],
+		"paths": {
+			"@app/*": ["app/*"],
+			"@sign-in/*": ["app/modules/sign-in/*"],
+			"@sign-up/*": ["app/modules/sign-up/*"],
+      "@core/*": ["app/modules/core/*"],
+			"@shared/*": ["app/modules/shared/*"],
+			"@theme/*": ["app/modules/theme/*"],
+      "@user/*": ["app/modules/user/*"],
+      "@home/*": ["app/modules/home/*"],
+      "@admin/*": ["app/modules/admin/*"],
+      "@models/*": ["app/models/*"],
+      "@environment": [
+        "environments/environment.ts"
+      ],
+		}
+	},
+	"angularCompilerOptions": {
+		"enableI18nLegacyMessageIdFormat": false,
+		"strictInjectionParameters": true,
+		"strictInputAccessModifiers": true,
+		"strictTemplates": true
+	}
+}

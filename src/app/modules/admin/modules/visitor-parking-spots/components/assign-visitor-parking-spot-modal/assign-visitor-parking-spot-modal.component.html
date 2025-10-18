@@ -1,0 +1,54 @@
+<div class="ion-modal">
+	<ion-content>
+		<form class="ion-text-left ion-padding needs-validation" novalidate [formGroup]="assignSpotForm">
+			<div class="ion-padding-bottom">
+				<label for="licensePlate" class="form-label">Placa</label>
+				<input
+					type="licensePlate"
+					class="form-control"
+					id="licensePlate"
+					formControlName="licensePlate"
+					[class.is-invalid]="shouldShowError('licensePlate')"
+				/>
+				@if (shouldShowError('licensePlate')) {
+					<div class="invalid-feedback">
+						@for (validation of signInValidationMessages().licensePlate; track validation.type) {
+							@if (assignSpotForm.controls['licensePlate'].hasError(validation.type)) {
+								<div>{{ validation.message }}</div>
+							}
+						}
+					</div>
+				}
+			</div>
+			<div class="ion-padding-bottom">
+				<label for="phone" class="form-label">Numero de telefono</label>
+				<input
+					type="phone"
+					class="form-control"
+					id="phone"
+					formControlName="phone"
+					[class.is-invalid]="shouldShowError('phone')"
+				/>
+				@if (shouldShowError('phone')) {
+					<div class="invalid-feedback">
+						@for (validation of signInValidationMessages().phone; track validation.type) {
+							@if (assignSpotForm.controls['phone'].hasError(validation.type)) {
+								<div>{{ validation.message }}</div>
+							}
+						}
+					</div>
+				}
+			</div>
+			<div class="ion-padding-bottom">
+				<label for="observations" class="form-label">Observaciones</label>
+
+				<textarea name="observations" id="observations" formControlName="observations" class="form-control"></textarea>
+			</div>
+			<div class="d-grid gap-2">
+				<button class="btn btn-primary" type="button" [disabled]="assignSpotForm.invalid" (click)="assignSpot()">
+					Asignar espacio
+				</button>
+			</div>
+		</form>
+	</ion-content>
+</div>

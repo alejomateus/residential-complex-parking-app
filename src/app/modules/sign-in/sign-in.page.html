@@ -1,0 +1,62 @@
+<ion-content [fullscreen]="true">
+	<div class="vertical-center">
+		<ion-grid>
+			<ion-row>
+				<ion-col size="12" size-sm="1" size-md="3" size-lg="4"></ion-col>
+				<ion-col size="12" size-sm="10" size-md="6" size-lg="4" class="ion-text-center">
+					<img src="assets/logo_kot.png" alt="" class="ion-padding" />
+					<div class="login-container">
+						<p class="fs-3 fw-bold title ion-padding">Bienvenido a tu aplicacion de parqueo</p>
+						<form class="ion-text-left ion-padding needs-validation" novalidate [formGroup]="signInForm">
+							<div class="ion-padding-bottom">
+								<label for="email" class="form-label">Correo electronico</label>
+								<input
+									type="email"
+									class="form-control"
+									id="email"
+									formControlName="email"
+									[class.is-invalid]="shouldShowError('email')"
+								/>
+								@if (shouldShowError('email')) {
+								<div class="invalid-feedback">
+									@for (validation of signInValidationMessages().email; track validation.type) { @if
+									(signInForm.controls['email'].hasError(validation.type)) {
+									<div>{{ validation.message }}</div>
+									} }
+								</div>
+								}
+							</div>
+							<div class="ion-padding-bottom">
+								<label for="password" class="form-label">Contraseña</label>
+								<input
+									type="password"
+									class="form-control"
+									id="password"
+									formControlName="password"
+									[class.is-invalid]="shouldShowError('password')"
+								/>
+								@if (shouldShowError('password')) {
+								<div class="invalid-feedback">
+									@for (validation of signInValidationMessages().password; track validation.type) { @if
+									(signInForm.controls['password'].hasError(validation.type)) {
+									<div>{{ validation.message }}</div>
+									} }
+								</div>
+								}
+							</div>
+							<div class="ion-text-end ion-padding-bottom">
+								<a class="btn btn-link text-decoration-underline fw-bold">¿Olvidaste tu contraseña?</a>
+							</div>
+							<div class="d-grid gap-2">
+								<button class="btn btn-primary" type="button" [disabled]="signInForm.invalid" (click)="signIn()">
+									Ingresar ahora
+								</button>
+							</div>
+						</form>
+					</div>
+				</ion-col>
+				<ion-col size="12" size-sm="1" size-md="3" size-lg="4"></ion-col>
+			</ion-row>
+		</ion-grid>
+	</div>
+</ion-content>

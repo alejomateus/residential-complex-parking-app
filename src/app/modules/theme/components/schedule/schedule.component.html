@@ -1,0 +1,69 @@
+<div class="table-responsive-md d-none d-sm-block">
+	<table class="table table-bordered border-primary shadow">
+		<thead>
+			<tr class="table-primary">
+				@for (key of keys; track $index) {
+					<th scope="col" class="ion-padding">{{ schedule[key].label }}</th>
+				}
+			</tr>
+		</thead>
+		<tbody>
+			@for (item of max; track item; let idx = $index) {
+				<tr>
+					@for (key of keys; track $index) {
+						<td class="ion-padding">
+							{{ schedule?.[key]?.hours[idx]?.start_time }} - {{ schedule?.[key]?.hours[idx]?.end_time }}
+						</td>
+					}
+				</tr>
+			}
+			@if (isEdit === false) {
+				<tr>
+					@for (key of keys; track $index) {
+						<td class="ion-padding">
+							<div class="d-grid gap-2">
+								<button class="btn btn-primary" type="button">Agregar</button>
+							</div>
+						</td>
+					}
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+
+<ion-modal [keepContentsMounted]="true">
+	<ng-template>
+		<ion-datetime
+			[formatOptions]="{
+				time: { hour: '2-digit', minute: '2-digit', second: '2-digit' }
+			}"
+			id="datetime"
+			presentation="time"
+			locale="en-GB-u-hc-h12"
+		>
+		</ion-datetime>
+	</ng-template>
+</ion-modal>
+<div class="d-block d-sm-none">
+	@for (key of keys; track $index) {
+		<ion-card color="secondary" class="">
+			<ion-card-header>
+				<ion-card-title>{{ schedule[key].label }}</ion-card-title>
+			</ion-card-header>
+
+			<ion-card-content>
+				@for (item of schedule[key]?.hours; track item; let idx = $index) {
+					<div class="border border-white py-2 mb-2 rounded-2">
+						<ion-label>{{ item?.start_time }} - {{ item?.end_time }}</ion-label>
+					</div>
+				}
+				@if (!isEdit) {
+						<div class="d-grid gap-2">
+							<button class="btn btn-light" type="button">Agregar</button>
+						</div>
+				}
+			</ion-card-content>
+		</ion-card>
+	}
+</div>

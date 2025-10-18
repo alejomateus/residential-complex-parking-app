@@ -1,0 +1,32 @@
+<ion-content [fullscreen]="true">
+	<div class="p-4"></div>
+	<ion-grid>
+		<ion-row>
+			<ion-col size="12" class="ion-text-center pt-4">
+				<h3>Espacios de parqueo para visitantes</h3>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col class="ion-no-padding"></ion-col>
+			<ion-col size="12" size-sm="11" size-md="11" size-lg="10">
+				<ion-row>
+					@for (spot of visitorParkingSpots(); track spot) {
+					<ion-col size="6" size-sm="4" size-md="4" size-lg="3" class="p-2 pb-2">
+						<ion-card
+							expand="block"
+							[color]="spot.available ? 'secondary': 'danger'"
+							class="m-0 ion-padding"
+              (click)="selectParkingSpot(spot)"
+						>
+							<ion-card-header class="ion-text-center p-2">
+								<ion-card-title> <h4 class="m-0">{{ spot.name }}</h4></ion-card-title>
+							</ion-card-header>
+						</ion-card>
+					</ion-col>
+					}
+				</ion-row>
+			</ion-col>
+			<ion-col></ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>
